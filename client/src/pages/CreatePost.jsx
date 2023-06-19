@@ -9,6 +9,7 @@ import { FormFeild, Loader } from '../components'
 const CreatePost = () => {
 
   const navigate = useNavigate();
+
   const [Form,setForm] = useState({
     name: '',
     prompt: '',
@@ -19,7 +20,30 @@ const CreatePost = () => {
   const [loading, setloading] = useState(false);
 
 
-  const generateImg = () => {
+  const generateImg = async () => {
+    if(Form.prompt){
+      try{
+        setGeneratingImg(true);
+        const response = await fetch('http://localhost:8080/api/v1/dalle', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body : JSON.stringify({prompt: Form.prompt})
+        })
+
+        const data = await response.json();
+        console.log(data);
+
+        setForm({...Form, photo: `data:image/jpeg;base64,${data.photo}`})
+      }catch(err){
+        alert("the error is " + err) 
+      }finally{
+        setGeneratingImg(false);
+      }
+    } else {
+      alert('Please enter a prompt')
+    }
 
   }
 
