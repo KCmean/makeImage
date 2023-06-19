@@ -9,7 +9,7 @@ import { FormFeild, Loader } from '../components'
 const CreatePost = () => {
 
   const navigate = useNavigate();
-  useState[form.setForm] = useState({
+  useState[Form.setForm] = useState({
     name: '',
     prompt: '',
     photo: '',
@@ -50,7 +50,7 @@ const CreatePost = () => {
               type = "text"
               name = "name"
               placeholder = "Ubunye Mweli"
-              value = {form.name}
+              value = {Form.name}
               handleChange = {handleChange}
             />
             <FormFeild 
@@ -58,7 +58,7 @@ const CreatePost = () => {
               type = "text"
               name = "Prompt"
               placeholder = "A cat made of ice cream"
-              value = {form.prompt}
+              value = {Form.prompt}
               handleChange = {handleChange}
               isSupriseMe
               handleSupriseMe = {handleSupriseMe}
